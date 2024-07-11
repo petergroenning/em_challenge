@@ -18,9 +18,9 @@ I believe, that these forecasts will serve as good predictors. However, as I don
 In the jupyter notebook `signal.ipynb` I have outlined my initial data exploration.
 
 #### Model
-With limited time I decide to make a baseline forecasting model.
+With limited time I decided to make a baseline forecasting model.
 It is always good to start simple, and we need a baseline to compare more complicated models with.
-As baseline I choose an ARIMA model. I end up with an ARIMA $(2,1,1)\times(1,1,1)_{24}$. See the notebook `modeling.ipynb`for details.
+As baseline I chose an ARIMA model. I ended up with an ARIMA $(2,1,1)\times(1,1,1)_{24}$. See the notebook `modeling.ipynb`for details.
 
 #### Algorithm
 The baseline model is found in the `src/baseline.py`.
@@ -40,6 +40,14 @@ The algorithm work as follows:
 - Fit an  ARIMA $(2,1,1)\times(1,1,1)_{24}$ to the data.
 - Run the filter on the three weeks
 - Return 24 hour forecasts (24 steps) including confidence intervals
+
+#### Results
+I tested the model on 200 days in 2019:
+- MSE (24h) = 7172
+- MAE (24h) = 61
+- MAPE (24h) = 36 %
+
+See the notebook `results.ipynb` for details
 
 #### Get started
 ```
