@@ -35,11 +35,14 @@ class Baseline():
                 upper: np.array, upper bound of the forecasted values
                 lower: np.array, lower bound of the forecasted values
         '''
-        model_fit = self.fit(x_train)
+        model_fit = self.fit(x_train.values)
         forecast = model_fit.get_forecast(steps =n_steps)
         mean = forecast.predicted_mean
         upper, lower = forecast.conf_int().T
-        return  mean, upper, lower
+
+        
+        return  pd.DataFrame({'mean': mean, 'upper': upper, 'lower': lower},
+                             index=pd.to_datetime(x_train.index[-n_steps:]) + pd.Timedelta('1 day'))
     
     def fetch_data(self, time, n_days = 21):
         ''' Fetch data from the database
@@ -52,7 +55,7 @@ class Baseline():
         '''
 
         df = pd.read_csv('data/DK-DK2.csv', index_col=0)
-        data = df.carbon_intensity_avg[:time].iloc[-n_days*24:].values
+        data = df.carbon_intensity_avg[:time].iloc[-n_days*24:]
         return data
     
     
@@ -60,8 +63,8 @@ class Baseline():
     def get_forecast(self, time, n_days = 21, n_ahead = 24):
 
         data = self.fetch_data(time, n_days)
-        mean, upper, lower = self._forecast(data, n_ahead)
-        return mean, upper, lower
+        return self._forecast(data, n_ahead)
+        
     
 
 
@@ -69,13 +72,8 @@ class Baseline():
 
 
 if __name__ == '__main__':
-    import pandas as pd
-    df = pd.read_csv('data/DK-DK2.csv', index_col=0)
 
-    x_train =df.carbon_intensity_avg.values
     model = Baseline()
-
-
-    mean, upper, lower = model.get_forecast('2016-01-04', 21, 24)
-    print(mean)
+    forecast= model.get_forecast('2016-01-04 06', 21, 24)
+    print(forecast)
 
