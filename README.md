@@ -47,7 +47,16 @@ I tested the model on 200 days in 2019:
 - MAE (24h) = 61
 - MAPE (24h) = 36 %
 
-See the notebook `results.ipynb` for details
+See the notebook `results.ipynb` for details.
+
+Examples of predictions:
+
+![Alt text](output1.png)
+
+![Alt text](output2.png)
+
+![Alt text](output3.png)
+
 
 #### Get started
 ```
