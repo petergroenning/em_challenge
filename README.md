@@ -75,4 +75,4 @@ The ARIMA model is linear and only considers carbon_intensity_avg. It could be i
 The model should be considered as a baseline as more complicated non-linear models are expected to do better.
 If it is possible to obtain features for future values, then boosting algorithms such as xgboost could be interesting to consider.
 
-
+I could also have created other models to predict other variables to include in the carbon_intensity forecasting model, but that’s a task for later :)
