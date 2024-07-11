@@ -9,12 +9,12 @@ def main(time, n_days = 21, n_ahead = 24, conf = False):
         n_days = 21
     if n_ahead is None:
         n_ahead = 24
-    mean, lower, upper = baseline.get_forecast(time, n_days, n_ahead)
+    forecast = baseline.get_forecast(time, n_days, n_ahead)
 
     if conf:
-        return mean, lower, upper
+        return forecast
     else:
-        return mean
+        return forecast[['mean']]
 
 
 argparser = argparse.ArgumentParser()

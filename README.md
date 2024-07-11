@@ -58,6 +58,16 @@ pip install -r requirements.txt
 pip install .
 ```
 
+The data needs to be stored in the `data/` folder.
+You can get the outputs directly by calling the main function:
+
+```
+python src/main.py --time='2019-01-01' --n_days=21 --n_ahead=24 --conf=False
+```
+where time is the time you want the forecast from, n_days is how many days to fetch data from to fit the model, n_head is the forecast horizon and conf is whether or not to include condifence intervals.
+The last three arguments are optional.
+
+
 
 #### How to improve?
 The ARIMA model is linear and only considers carbon_intensity_avg. It could be improved by included external regressors such as wind speed or solar production if 24-hour forecasts are available.
