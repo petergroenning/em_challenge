@@ -55,7 +55,7 @@ class Baseline():
         '''
 
         df = pd.read_csv('data/DK-DK2.csv', index_col=0)
-        data = df.carbon_intensity_avg[:time].iloc[-n_days*24:]
+        data = df.carbon_intensity_avg[:time].iloc[-n_days*24:].interpolate()
         return data
     
     
