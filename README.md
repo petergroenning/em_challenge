@@ -49,7 +49,7 @@ I tested the model on 200 days in 2019:
 
 See the notebook `results.ipynb` for details.
 
-Examples of predictions:
+Examples of forecasts:
 
 ![Alt text](output1.png)
 
@@ -58,6 +58,7 @@ Examples of predictions:
 ![Alt text](output3.png)
 
 
+For the final forecast, there is a sudden increase in carbon intensity compared to the previous day. Since the model relies exclusively on the most recent recorded carbon intensity data, it cannot predict this rise.
 #### Get started
 ```
 git clone https://github.com/petergroenning/em_challenge.git
